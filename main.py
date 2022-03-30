@@ -9,8 +9,8 @@ os.environ['SDL_VIDEO_CENTERED'] = '2'
 pygame.init()
 
 # constants
-WIDTH = 450
-HEIGHT = 350
+WIDTH = 1440
+HEIGHT = 900
 FPS = 30
 
 # RGB colors
@@ -31,7 +31,7 @@ car_images = [
 
 # changes size of all images to fit screen
 for i in range(len(car_images)):
-  car_images[i] = pygame.transform.scale(car_images[i], (350, 250))
+  car_images[i] = pygame.transform.scale(car_images[i], (350, 350))
 
 # set Window
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -44,18 +44,20 @@ font = pygame.font.Font('./fonts/NotoSansJP-Regular.otf', 40)
 # create your text
 text = font.render('速い！', True, black, white)
 text1 = font.render('Art: Sorin Jackson', True, black, white)
-text2 = text = font.render('Animation:Luke Erdman & Jaden Hannon', True, black, white)
+text2 = font.render('Animation:Luke Erdman & Jaden Hannon', True, black, white)
 textRect = text.get_rect()
-textRect1 = text.get_rect()
-textRect2 = text.get_rect()
+textRect1 = text1.get_rect()
+textRect2 = text2.get_rect()
 
 # position the text
-textRect.center = (WIDTH // 5, HEIGHT // 10)
-textRect1.center = (WIDTH // 20, HEIGHT // 10)
-textRect2.center = (WIDTH // 20, HEIGHT // 15)
+textRect.center = (WIDTH // 2, HEIGHT // 10)
+textRect1.center = (WIDTH // 2, HEIGHT // 6)
+textRect2.center = (WIDTH // 2, HEIGHT // 4)
 
 # display text
 WINDOW.blit(text, textRect)
+WINDOW.blit(text1, textRect1)
+WINDOW.blit(text2, textRect2)
 pygame.display.flip()
 
 # draw shape function
@@ -64,7 +66,7 @@ def drawShape():
   global image_count
   if (image_count == 2):
     image_count = 0
-  WINDOW.blit(car_images[image_count], (1, 100))
+  WINDOW.blit(car_images[image_count], (450, 350))
   pygame.display.flip()
   image_count += 1
   
